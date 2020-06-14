@@ -241,12 +241,10 @@ function hessian_sparsity(f, X, args...; raw=false)
     abstract_run(process,
                  ctx, f, tag(X, ctx, HessInput()),
                  map(arg -> arg isa Fixed ?
-                     arg.value : tag(arg, ctx, one(TermCombination)), args)...)
+                     arg.val : tag(arg, ctx, one(TermCombination)), args)...)
 
     if raw
         return ctx, terms[], val
     end
     _sparse(terms[], length(X))
 end
-
-

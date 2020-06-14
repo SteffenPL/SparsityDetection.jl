@@ -138,7 +138,7 @@ function jacobian_sparsity(f!, Y, X, args...;
                  tag(Y, ctx, JacOutput()),
                  tag(X, ctx, JacInput()),
                  map(arg -> arg isa Fixed ?
-                     arg.value : tag(arg, ctx, ProvinanceSet(())), args)...;
+                     arg.val : tag(arg, ctx, ProvinanceSet(())), args)...;
                  verbose=verbose)
 
     if raw
